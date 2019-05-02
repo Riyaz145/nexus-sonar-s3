@@ -1,0 +1,23 @@
+1) Create jenkins serveer
+
+1) install plugin -> S3 publisher
+2) Need to generate access key in aws ->  go to user in dashboard -> select "my security credentials"  ->Click "create new acees key"
+  -> download csv fie
+ 3) goto -> manage jenkins -> select "configure system" , go down select "Amazon S3 profiles" , Add.
+ 
+4) give below :   	Profile name ,  Access key , Secret key
+
+5) create job:
+    give : githuburl
+	give : maven goal
+	 
+	 -> come below "postbuild actions"
+         select -> 	 Publish artifacts to S3 Bucket
+		 
+		  give below details :
+		  
+		          	S3 profile
+					Source   = **/*.war
+				    Destination bucket  =  (bucketnmae)
+					Storage class = STANDARD
+					Bucket Region = us-east-1
