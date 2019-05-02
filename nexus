@@ -1,0 +1,75 @@
+2) install Nexus:
+
+nexus page select - product ->nexus-repository-oss
+
+https://www.sonatype.com/nexus-repository-oss  :  -> get repo oss
+
+dont select 3  -> select 2.x 
+
+in downloads select -> Nexus Repository Manager 2 OSS
+
+select linux download link  -> copy address 
+
+wget https://download.sonatype.com/nexus/oss/nexus-latest-bundle.tar.gz
+
+extract file :
+
+tar -xvf nexus-latest-bundle.tar.gz
+
+
+it downloads as a package   CD to nexus-2.14.10-01,   CD to bin
+
+start nexus :  CMD :  ./nexus start
+
+http://18.234.203.88:8081/nexus 
+
+login to nexus :   user :  admin   pwd :  admin123
+
+select -> repositories  -->  Add  --> hosted repository
+
+
+now go to ur jenkin server:
+
+login jenkins:
+
+got oto -> manage jenkins
+
+add plugin :  Nexus Artifact Uploader 
+
+  after restrat server
+
+
+
+we will build code game of life :
+
+
+---
+
+create jenkins job
+
+   add git
+
+    maven : install
+
+in build select :  nexus artifact uploader
+
+
+    Nexus URL	:  18.234.203.88:8081/nexus
+   Credentials	 :(add nexus logins   - admin,admin123)
+ 	GroupId	 :  dev
+ 	Version	  :  $BUILD_ID
+ 	Repository: myrepo
+  	ArtifactId: dev
+ 	Type: war
+ 	File: gameoflife-web/target/gameoflife.war
+
+give fallowing details only :
+
+
+Repository ID  :myrepo
+
+Repository Name  :  myrepo
+
+u can see ur repo in repository;
+
+now we have to save our artifacts in to this repo
